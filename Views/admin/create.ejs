@@ -1,0 +1,16 @@
+<%- include ('./partials/header.ejs') %>
+<%- include ('./partials/navbar.ejs') %>
+
+<div class="container">
+    <h1>Criar Usuário</h1>
+    <form action="/admin/create" method="POST">
+        <input type="text" name="name" placeholder="Nome" class="form-control mb-3">
+        <input type="email" name="email" placeholder="Email" class="form-control mb-3">
+        <input type="password" name="password" placeholder="Senha" class="form-control mb-3">
+        <button type="submit" class="btn btn-outline-info w-100">Criar</button>
+    </form>
+</div>
+
+
+
+<%- include ('./partials/footer.ejs') %>

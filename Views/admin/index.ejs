@@ -1,0 +1,64 @@
+
+<%- include ('./partials/header.ejs') %>
+<%- include ('./partials/navbar.ejs') %>
+
+<div class="container">
+
+    <h1>Admins</h1>
+
+    <a href="/admin/create" class="btn btn-info mb-2 text-light">Criar Admin</a>
+
+    <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Nome</th>
+            <th scope="col">Email</th>
+            <th scope="col">Opções</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            
+            <% admins.forEach(admin => { %>
+                <tr>
+                    <td> <%= admin.id %> </td>
+                    <td> <%= admin.name %> </td>
+                    <td> <%= admin.email %> </td>
+                    <td>
+                        <% if(prime == true){ %>
+                            <% if(admin.prime == true){ %>
+                                <a href="/admin/edit/<%= admin.id %>" class="btn btn-outline-warning mb-1"><i class="fas fa-edit"></i></a>
+                            <% }else{ %>
+                                <a href="/admin/edit/<%= admin.id %>" class="btn btn-outline-warning mb-1"><i class="fas fa-edit"></i></a>
+                                
+                                <form action="/admin/delete" method="POST" style="display: inline;">
+                                    <input type="hidden" name="id" value="<%= admin.id %>">
+                                    <button type="submit" class="btn btn-outline-danger mb-1"><i class="fas fa-trash-alt"></i></button>
+                                </form>
+                            <% } %>
+                        <% }else{ %>
+                            <% if(name == admin.name){ %>
+                                <a href="/admin/edit/<%= admin.id %>" class="btn btn-outline-warning mb-1"><i class="fas fa-edit"></i></a>
+                                
+                            <% }else{ %>
+                                Admin
+                            <% } %>
+                        <% } %>
+                        
+                        
+                    </td>
+                </tr>
+            <% }) %>
+            
+          </tr>
+          
+        </tbody>
+      </table>
+
+</div>
+
+
+
+<%- include ('./partials/footer.ejs') %>
+

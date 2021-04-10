@@ -1,0 +1,113 @@
+<%- include ('partials/header.ejs') %>
+<%- include ('partials/navbar.ejs') %>
+
+<div class="container">
+    <div class="row">
+        <% books.forEach(book => { %>          
+                <div class="col align-self-center mt-5">
+                  <div class="d-flex align-items-end divProduct <%= book.color %>">
+
+                    <div class="bookImg" style="background-image: url('<%= book.imgLink %>');" >                       
+                    </div>
+
+                    <div class="text-light bookContent">
+                        
+                        <div style="font-family: Taviraj;
+                        font-size: 14px;
+                        font-style: normal;
+                        font-weight: 500;
+                        line-height: 32px;
+                        letter-spacing: 0em;
+                        text-align: left;
+                        "><%= book.name %> <span style="font-family: Taviraj;
+                        font-size: 10px;
+                        font-style: normal;
+                        font-weight: 500;
+                        line-height: 32px;
+                        letter-spacing: 0em;
+                        text-align: left;
+                        ">
+                            (<%= book.state %>)
+                        </span></div>
+                        <div style="font-family: Taviraj;
+                        font-size: 24px;
+                        font-style: normal;
+                        font-weight: 400;
+                        line-height: 32px;
+                        letter-spacing: 0em;
+                        text-align: left;
+                        display: inline;
+                        ">R$ <%= book.price %>
+                        </div>
+                        
+                        <button onclick="selectProduct(
+                          '<%= book.name %>',
+                          '<%= book.author %>',
+                          '<%= book.imgLink %>',
+                          '<%= book.state %>',
+                          '<%= book.description %>',
+                          '<%= book.price %>',
+                          '<%= book.color %>'
+                        )"
+                        class="btn btn-outline-light mb-1" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasBottom" aria-controls="offcanvasBottom">
+                          Ver Mais
+                        </button>
+                    </div>
+                  </div>
+                </div>
+        <% }) %>
+
+    </div>   
+</div>
+
+
+
+
+
+
+
+
+<div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasBottom" aria-labelledby="offcanvasBottomLabel">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title text-light" id="offcanvasBottomLabel"></h5>
+    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body">
+
+      <div id="img" class="w-75">      
+      </div>
+
+      <div class="text-light">
+        <span id="description"></span>
+      </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<%- include ('partials/footer.ejs') %>
+
+<script>
+    function selectProduct(name, author, img, state, description, price, color)
+    {
+        document.getElementById('offcanvasBottomLabel').innerHTML = name;
+        document.getElementById('img').innerHTML = `
+        <img src="${img}" alt="" class="w-100">
+        `;
+        document.getElementById('description').innerHTML = description;
+
+        document.getElementById('offcanvasBottom').className = 'offcanvas offcanvas-start offcanvas-toggling show ' + color;
+    }
+</script>
+
+

@@ -1,0 +1,60 @@
+.divProduct {
+    width: 320px;
+    height: 200px;
+    padding-left: 20px;
+    
+    background-position: bottom;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.divProduct .buttom {
+    border: none;
+    background: none;
+}
+
+.back-blue {
+    background-color: #07FAFA;
+}
+
+.blue {
+    background-image: url(/img/colorblue.png);
+}
+
+.black {
+    background-image: url(/img/colorblack.png);
+}
+
+.green {
+    background-image: url(/img/colorgreen.png);
+}
+
+.red {
+    background-image: url(/img/colorred.png);
+}
+
+.purple {
+    background-image: url(/img/colorpurple.png);
+}
+
+
+.bookImg {
+    width: 130px;
+    height: 200px;
+    
+    background-position: bottom;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.bookContent {
+    margin-left: 5px;
+    width: 50%;
+}
+
+.offcanvas {
+    background-position: top;
+    background-size:cover;
+    background-repeat: no-repeat;
+    
+}

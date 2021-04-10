@@ -1,0 +1,89 @@
+<%- include ('../partials/header.ejs') %>
+<%- include ('../partials/navbar.ejs') %>
+
+<div class="container">
+    <h1>Editar Livro</h1>
+    <form action="/admin/books/edit" method="POST">
+        <input type="hidden" name="id" value="<%= book.id %>">
+        <input type="text" name="name" placeholder="Nome do Livro" value="<%= book.name %>" class="form-control mb-3">
+        <input type="text" name="author" placeholder="Autor" value="<%= book.author %>" class="form-control mb-3">
+        <select name="state" id="" class="form-select mb-3">
+            <% if(book.state == 'Usado'){ %>
+                <option value="Novo">Novo</option>
+                <option value="Usado" selected>Usado</option>
+            <% }else { %>
+                <option value="Novo" selected>Novo</option>
+                <option value="Usado">Usado</option>
+            <% } %> 
+            
+        </select>
+        <select name="categoryId" id="" class="form-select mb-3">
+            <% categories.forEach(category => { %>
+                <% if(category.id == book.categoryId){ %>
+                    <option value="<%= category.id %>" selected> <%= category.title %> </option>
+                <% }else { %>
+                    <option value="<%= category.id %>"> <%= category.title %> </option>
+                <% } %>  
+            <% }) %>    
+        </select>
+
+        <select name="color" id="" class="form-select mb-3">
+            <option value="red">Vermelho</option>
+            <option value="green">Verde</option>
+            <option value="purple">Roxo</option>
+            <option value="blue">Azul</option>
+            <option value="black">Preto</option>
+        </select>
+
+        <input type="text" name="price" placeholder="0,00"  value="<%= book.price %>" class="form-control mb-3">
+        <textarea name="description" id="description" cols="30" rows="10" placeholder="Descrição"><%= book.description %></textarea>
+        
+        
+        
+        <div class="input-group my-3">
+            <input type="text" id="imgLink" name="imgLink" placeholder="Link da Imagem" class="form-control" value="<%= book.imgLink %>">
+            <div class="input-group-append">
+                <button onclick="imgSearch()" class="btn btn-outline-info" type="button"> <i class="fas fa-search"></i> </button>
+            </div>
+          </div>
+        
+
+        <div id="imgScreen" class="w-25 mx-auto mb-3">
+        
+        </div>
+        
+        
+        
+        
+        
+        
+        
+        
+        <button type="submit" class="btn btn-outline-info w-100 mb-3">Atualizar</button>
+    </form>
+
+</div>
+
+
+<%- include ('../partials/footer.ejs') %>
+
+<script>
+    tinymce.init({
+        language: 'pt_BR',
+        selector: '#description',
+        plugins: [
+            'advlist autolink link image lists print preview hr searchreplace wordcount fullscreen insertdatetime media save table paste emoticons'
+        ]
+    });
+</script>
+
+<script>
+    function imgSearch()
+    {
+        document.getElementById('imgScreen').innerHTML = `
+        <img src="${document.getElementById('imgLink').value}" alt="">
+        `
+    }
+
+    imgSearch()
+</script>

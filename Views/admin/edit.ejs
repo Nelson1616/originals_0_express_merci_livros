@@ -1,0 +1,17 @@
+<%- include ('./partials/navbar.ejs') %>
+<%- include ('./partials/header.ejs') %>
+
+<div class="container">
+    <h1>Editar Usuário</h1>
+    <form action="/admin/edit" method="POST">
+        <input type="hidden" name="id" value="<%= admin.id %>">
+        <input type="text" name="name" placeholder="Nome" value="<%= admin.name %>" class="form-control mb-3">
+        <input type="email" name="email" placeholder="Email" value="<%= admin.email %>" class="form-control mb-3">
+        <input type="password" name="password" placeholder="Senha" class="form-control mb-3">
+        <button type="submit" class="btn btn-outline-info w-100">Atualizar</button>
+    </form>
+</div>
+
+
+
+<%- include ('./partials/footer.ejs') %>
